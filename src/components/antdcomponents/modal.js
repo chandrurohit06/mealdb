@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import { Button, Modal, Form, Input } from "antd";
 import { useNavigate } from "react-router-dom";
 
-import { message } from 'antd';
+import { message } from "antd";
+
+//component
+import FormInput from "./formInput";
 
 export const Popupmodal = ({ visible, onClose }) => {
   const [form] = Form.useForm();
@@ -14,27 +17,6 @@ export const Popupmodal = ({ visible, onClose }) => {
     city: "",
   });
   const navigate = useNavigate();
-  let isValid = false;
-
-  const validateUsername = (rule, value) => {
-    const contactPattern = /^[0-9]{10}$/;
-    if (!value) {
-      isValid = false;
-      return Promise.reject(`name is required`);
-    } else if (rule?.field === "fullName" || rule?.field === "address") {
-      isValid = false;
-      if (value?.length < 5) {
-        return Promise.reject(`name must be at least 5 characters long`);
-      }
-    } else if (rule?.field === "mobileNo") {
-      if (!contactPattern.test(value)) {
-        isValid = false;
-        return Promise.reject(`Please enter a 10-digit number.`);
-      }
-    } else {
-      return Promise.resolve();
-    }
-  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -54,21 +36,22 @@ export const Popupmodal = ({ visible, onClose }) => {
 
     if (checkErr.some((data) => !data?.errors?.length)) {
       messageApi.open({
-        type: 'success',
-        content: 'Thank you for providing your shipping information',
+        type: "success",
+        content: "Thank you for providing your shipping information",
         duration: 3,
       });
-      setTimeout(()=>{
+      setTimeout(() => {
         navigate("/meal/delivered", { state: { formData } });
-      },3000)
-    
+      }, 3000);
     }
   };
-  console.log(formData);
+  
+
+
 
   return (
     <>
-     {contextHolder}
+      {contextHolder}
       <Modal
         open={visible}
         title="Shipping Address"
@@ -82,21 +65,12 @@ export const Popupmodal = ({ visible, onClose }) => {
         }}
         footer={[
           <Button
-            key="cancel"
-            onClick={() => {
-              onClose();
-              form.resetFields();
-            }}
-          >
-            Cancel
-          </Button>,
-          <Button
             key="submit"
             type="primary"
             // loading={postData.loading}
             onClick={handleSubmit}
           >
-            Submit
+            Purchase
           </Button>,
         ]}
       >
@@ -106,101 +80,50 @@ export const Popupmodal = ({ visible, onClose }) => {
           layout="vertical"
           name="form_in_modal"
         >
-          {/* validator: (_, value) => validateUsername(_, value,), */}
-          <Form.Item
+          <FormInput
             label="Full Name"
             name="fullName"
-            rules={[
-              {
-                required: true,
-                message: "full Name is required",
-              },
-            ]}
-          >
-            <Input
-              type="text"
-              value={formData?.fullName}
-              name="fullName"
-              onChange={handleInputChange}
-            />
-          </Form.Item>
-          <Form.Item
+            type="text"
+            value={formData?.fullName}
+            onChange={handleInputChange}
+            min={5}
+          />
+
+          <FormInput
             label="Mobile No."
             name="mobileNo"
-            rules={[
-              {
-                required: true,
-                message: "Mobile No. is required",
-              },
-            ]}
-          >
-            <Input
-              type="number"
-              value={formData?.mobileNo}
-              name="mobileNo"
-              onChange={handleInputChange}
-            />
-          </Form.Item>
-          <Form.Item
+            type="number"
+            value={formData?.mobileNo}
+            onChange={handleInputChange}
+            isContact={true}
+          />
+
+          <FormInput
             label="State"
             name="state"
-            rules={[
-              {
-                required: true,
-                message: "State name is required",
-              },
-            ]}
-          >
-            <Input
-              type="textarea"
-              value={formData?.state}
-              name="state"
-              onChange={handleInputChange}
-            />
-          </Form.Item>
+            type="text"
+            value={formData?.state}
+            onChange={handleInputChange}
+          />
 
-          <Form.Item
+          <FormInput
             label="City"
             name="city"
-            rules={[
-              {
-                required: true,
-                message: "City Name is required",
-              },
-            ]}
-          >
-            <Input
-              type="textarea"
-              value={formData?.city}
-              name="city"
-              onChange={handleInputChange}
-            />
-          </Form.Item>
+            type="text"
+            value={formData?.city}
+            onChange={handleInputChange}
+          />
 
-          <Form.Item
-            label="Address(include house No.)"
+          <FormInput
+            label="Address"
             name="address"
-            rules={[
-              {
-                required: true,
-                message: "Address is required",
-              },
-            ]}
-          >
-            <Input
-              value={formData?.address}
-              type="textarea"
-              name="address"
-              onChange={handleInputChange}
-            />
-          </Form.Item>
+            type="text"
+            value={formData?.address}
+            onChange={handleInputChange}
+            min={5}
+          />
 
-          {/* {postData.error && (
-            <>
-              <br />
-              <span style={{ color: "red" }}>{postData.data}</span>
-            </>
-          )} */}
+         
         </Form>
       </Modal>
     </>
