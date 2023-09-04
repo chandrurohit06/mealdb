@@ -2,6 +2,8 @@ import React from 'react';
 import "./Loader.scss";
 import { loader } from "../../utils/images";
 
+//common loading component 
+
 const Loader = () => {
   return (
     <div className='loader my-5'>

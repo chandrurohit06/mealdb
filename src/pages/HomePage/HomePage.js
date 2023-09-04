@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import "./HomePage.scss";
-
+//components
 import Loader from "../../components/Loader/Loader";
 import CategoryList from "../../components/Category/CategoryList";
 import NotFound from "../../components/NotFound/NotFound";
 import MealList from "../../components/Meal/MealList";
 import Search from "../../components/antdcomponents/search";
-import { useSelector, useDispatch } from "react-redux";
 
+//redux
+import { useSelector, useDispatch } from "react-redux";
 import {
   startFetchMealsBySearch,
   startFetchSingleMeal,
@@ -28,9 +29,6 @@ const HomePage = () => {
 
   const dispatch = useDispatch();
 
-  console.log(categories);
-  console.log(categoryMeals);
-
   const handleChange = (e) => {
     setSearchTerm(e.target.value);
     if (e.target.value.length > 0) {
@@ -45,9 +43,9 @@ const HomePage = () => {
     dispatch(startFetchMealByCategory("Miscellaneous"));
   }, []);
 
-  const onChangeSearch = (value) => {};
-
-  console.log( categoryMeals);
+  const onChangeSearch = () => {
+    dispatch(startFetchMealsBySearch(searchTerm))
+  };
 
   return (
     <main className="main-content">
@@ -66,9 +64,6 @@ const HomePage = () => {
       ) : (
         ""
       )}
-
-      {/* { (mealsLoading) ? <Loader /> : (meals === null) ? <NotFound /> : (meals?.length) ? <MealList meals = {meals} /> : "" }
-      { (categoryLoading) ? <Loader /> : <CategoryList categories = {categories} /> } */}
     </main>
   );
 };

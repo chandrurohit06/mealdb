@@ -1,10 +1,12 @@
 import React, {useEffect} from 'react';
 import "./CategoryPage.scss";
-
-import MealList from '../../components/Meal/MealList';
 import { useParams } from 'react-router-dom';
+//redux
 import { useDispatch,useSelector } from 'react-redux';
 import { startFetchMealByCategory } from '../../redux/meals/mealSlice';
+//components
+import MealList from '../../components/Meal/MealList';
+
 
 const CategoryPage = () => {
   const {name} = useParams();
@@ -15,8 +17,7 @@ const CategoryPage = () => {
     (state) => ({ ...state.mealsSlice })
   );
 
-  console.log(categoryMeals)
-  console.log(categories)
+
 
   let catDescription = "";
 

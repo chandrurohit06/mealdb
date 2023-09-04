@@ -1,6 +1,8 @@
 import React from "react";
 import { Button, Modal, Form, Input } from "antd";
 
+//form input
+
 const FormInput = ({
   label,
   name,

@@ -1,12 +1,14 @@
 import React, {useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import "./MealDetailsPage.scss";
+
+//components
+// import { startFetchSingleMeal } from '../../actions/mealsActions';
 import CategoryList from '../../components/Category/CategoryList';
 import MealSingle from "../../components/Meal/MealSingle";
-
-// import { startFetchSingleMeal } from '../../actions/mealsActions';
 import Loader from '../../components/Loader/Loader';
 
+//redux
 import { startFetchSingleMeal } from '../../redux/meals/mealSlice';
 import { useSelector,useDispatch } from 'react-redux';
 
@@ -26,8 +28,7 @@ const MealDetailsPage = () => {
     
   }, [id]);
 
-  console.log(categories)
-  console.log(meal)
+ 
 
   
 
@@ -35,7 +36,7 @@ const MealDetailsPage = () => {
 
   let ingredientsArr = [], measuresArr = [], singleMeal = {};
   let mealData = meal?.meals
-  console.log(mealData)
+
   if(meal && mealData?.length > 0){
     for(let props in mealData[0]){
       if(props.includes('strIngredient')){

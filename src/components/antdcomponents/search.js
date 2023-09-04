@@ -1,7 +1,7 @@
 import React from 'react';
 import { Row, Col, Input, Button } from 'antd';
 
-
+//antd search input
 function Search({onSearch,searchTerm,onChange}) {
   return (
     <div style={{ padding: '20px' }}>
@@ -10,7 +10,7 @@ function Search({onSearch,searchTerm,onChange}) {
           <Input.Search
           
             value={searchTerm}
-            placeholder="Search..."
+            placeholder="Search Meals..."
             enterButton="Search"
             size="large"
             onChange={onChange}

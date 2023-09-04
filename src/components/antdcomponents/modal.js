@@ -1,14 +1,17 @@
 import React, { useState } from "react";
+//antd
 import { Button, Modal, Form, Input } from "antd";
 import { useNavigate } from "react-router-dom";
-
 import { message } from "antd";
 
 //component
 import FormInput from "./formInput";
 
+//pop up model for shipping
 export const Popupmodal = ({ visible, onClose }) => {
   const [form] = Form.useForm();
+  const navigate = useNavigate();
+
   const [messageApi, contextHolder] = message.useMessage();
   const [formData, setFormData] = useState({
     fullName: "",
@@ -16,8 +19,8 @@ export const Popupmodal = ({ visible, onClose }) => {
     state: "",
     city: "",
   });
-  const navigate = useNavigate();
-
+ 
+//common onchange function for handling input
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -29,6 +32,7 @@ export const Popupmodal = ({ visible, onClose }) => {
   const closeData = () => {
     setFormData({});
   };
+
   // Handle form submission here
   const handleSubmit = async (values) => {
     await form.validateFields();

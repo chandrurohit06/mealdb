@@ -1,17 +1,25 @@
 import React, { useEffect } from "react";
-import { Button, Result } from "antd";
-import { useSelector, useDispatch } from "react-redux";
-import { Descriptions } from "antd";
-import { startFetchSingleMeal } from "../../redux/meals/mealSlice";
-import { Col, Divider, Row } from "antd";
-import { List, Typography } from "antd";
+//antd c
+import {
+  List,
+  Typography,
+  Image,
+  Card,
+  Col,
+  Divider,
+  Row,
+  Descriptions,
+  Button,
+  Result,
+} from "antd";
 import { useLocation, useNavigate } from "react-router-dom";
-import { Image } from "antd";
-import { Card } from "antd";
+
+//components
 import "../../components/Meal/Meal.scss";
-const style = {
-  padding: "8px 0",
-};
+//redux
+import { useSelector, useDispatch } from "react-redux";
+import { startFetchSingleMeal } from "../../redux/meals/mealSlice";
+
 
 export const FinalPage = () => {
   const { categories, meal, categoryLoading, mealLoading } = useSelector(
@@ -21,7 +29,6 @@ export const FinalPage = () => {
   const { formData } = location.state;
   const navigate = useNavigate();
 
-  console.log(formData);
   const dispatch = useDispatch();
   const items = [
     {
@@ -59,8 +66,7 @@ export const FinalPage = () => {
   const navigationType = window.performance?.navigation.type;
 
   useEffect(() => {
-  
-    console.log(navigationType)
+    console.log(navigationType);
     // Check if the page was manually refreshed (type 1 is a manual refresh)
     if (navigationType === 1) {
       // Redirect to the home page
@@ -69,7 +75,7 @@ export const FinalPage = () => {
   }, [navigationType === 1]);
 
   let mealImage = meal?.meals?.length > 0 && meal?.meals[0];
-  console.log(mealImage);
+ 
   return (
     <>
       <div style={{ height: "170px" }}>
