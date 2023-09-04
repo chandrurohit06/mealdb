@@ -10,7 +10,6 @@ const SearchForm = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
 
-
   const handleSearchTerm = (e) => {
     e.preventDefault();
     if((e.target.value.replace(/[^\w\s]/gi, "")).length !== 0){

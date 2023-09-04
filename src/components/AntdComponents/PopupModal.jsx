@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 //antd
-import { Button, Modal, Form, Input,Grid,Col,Row } from "antd";
+import { Button, Modal, Form, Input, Grid, Col, Row } from "antd";
 import { useNavigate } from "react-router-dom";
 import { message } from "antd";
 
 //component
-import FormInput from "./formInput";
+import FormInput from "./FormInput";
 
 //pop up model for shipping
 export const Popupmodal = ({ visible, onClose }) => {
@@ -19,8 +19,8 @@ export const Popupmodal = ({ visible, onClose }) => {
     state: "",
     city: "",
   });
- 
-//common onchange function for handling input
+
+  //common onchange function for handling input
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -49,37 +49,40 @@ export const Popupmodal = ({ visible, onClose }) => {
       }, 3000);
     }
   };
-  
-
-
 
   return (
     <>
       {contextHolder}
       <Modal
-       width={700}
+        width={700}
         open={visible}
         title="Shipping Address"
         okText="Submit"
         cancelText="Cancel"
         style={{
           top: 20,
-          width:500
+          width: 500,
         }}
         onCancel={() => {
           onClose();
         }}
         footer={[
-          <div style={{display:"flex",flexDirection:"row",justifyContent:"center"}}>
-          <Button
-           size="large"
-            key="submit"
-            type="primary"
-            // loading={postData.loading}
-            onClick={handleSubmit}
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "center",
+            }}
           >
-            Purchase
-          </Button>
+            <Button
+              size="large"
+              key="submit"
+              type="primary"
+              // loading={postData.loading}
+              onClick={handleSubmit}
+            >
+              Purchase
+            </Button>
           </div>,
         ]}
       >
@@ -89,49 +92,44 @@ export const Popupmodal = ({ visible, onClose }) => {
           layout="vertical"
           name="form_in_modal"
         >
-           <Row gutter={30}>
-      <Col span={12}>
-      <FormInput
-            label="Full Name"
-            name="fullName"
-            type="text"
-            value={formData?.fullName}
-            onChange={handleInputChange}
-            min={5}
-          />
-            <FormInput
-            label="State"
-            name="state"
-            type="text"
-            value={formData?.state}
-            onChange={handleInputChange}
-          />
-      </Col>
-      <Col span={12}>
-         <FormInput
-            label="Mobile No."
-            name="mobileNo"
-            type="number"
-            value={formData?.mobileNo}
-            onChange={handleInputChange}
-            isContact={true}
-          />
-            <FormInput
-            label="City"
-            name="city"
-            type="text"
-            value={formData?.city}
-            onChange={handleInputChange}
-          />
-      </Col>
-         </Row>
+          <Row gutter={30}>
+            <Col span={12}>
+              <FormInput
+                label="Full Name"
+                name="fullName"
+                type="text"
+                value={formData?.fullName}
+                onChange={handleInputChange}
+                min={5}
+              />
+              <FormInput
+                label="State"
+                name="state"
+                type="text"
+                value={formData?.state}
+                onChange={handleInputChange}
+              />
+            </Col>
+            <Col span={12}>
+              <FormInput
+                label="Mobile No."
+                name="mobileNo"
+                type="number"
+                value={formData?.mobileNo}
+                onChange={handleInputChange}
+                isContact={true}
+              />
+              <FormInput
+                label="City"
+                name="city"
+                type="text"
+                value={formData?.city}
+                onChange={handleInputChange}
+              />
+            </Col>
+          </Row>
 
-         
-
-       
-        
-        
-         <FormInput
+          <FormInput
             label="Address"
             name="address"
             type="text"
@@ -139,8 +137,6 @@ export const Popupmodal = ({ visible, onClose }) => {
             onChange={handleInputChange}
             min={5}
           />
-
-         
         </Form>
       </Modal>
     </>

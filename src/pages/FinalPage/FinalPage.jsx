@@ -18,8 +18,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import "../../components/Meal/Meal.scss";
 //redux
 import { useSelector, useDispatch } from "react-redux";
-import { startFetchSingleMeal } from "../../redux/meals/mealSlice";
-
+import { startFetchSingleMeal } from "../../redux/meals/MealSlice";
 
 export const FinalPage = () => {
   const { categories, meal, categoryLoading, mealLoading } = useSelector(
@@ -63,36 +62,20 @@ export const FinalPage = () => {
     dispatch(startFetchSingleMeal(id));
   }, []);
 
-  
-
-  const navigationType = window.performance?.navigation.type;
-  console.log(window?.performance.getEntriesByType("navigation")[0].type)
-
-  
+  let mealImage = meal?.meals?.length > 0 && meal?.meals[0];
 
   useEffect(() => {
-    console.log(navigationType);
-    // Check if the page was manually refreshed (type 1 is a manual refresh)
-    if (navigationType === 1) {
-      // Redirect to the home page
-      window.location.href = "/";
+    if (!mealImage) {
+      navigate("/");
     }
-  }, [navigationType === 1]);
+  }, []);
 
-  let mealImage = meal?.meals?.length > 0 && meal?.meals[0];
- 
   return (
     <>
       <div style={{ height: "170px" }}>
         <Result status="success" title="Order Successfully Purchased " />
       </div>
       <div style={{ padding: "0 4rem" }}>
-        {/* <Card
-        style={{
-          width: "70%",
-         
-        }}
-      > */}
         <Row>
           <Col
             style={{ padding: "2rem" }}
@@ -123,19 +106,10 @@ export const FinalPage = () => {
             md={16}
           >
             <div>
-              {/* <List
-              dataSource={data}
-              renderItem={(item) => (
-                <List.Item>
-                  <Typography.Text mark>[ITEM]</Typography.Text> {item}
-                </List.Item>
-              )}
-            /> */}
               <Descriptions size="middle" title="Customer Info" items={items} />
             </div>
           </Col>
         </Row>
-        {/* </Card> */}
       </div>
     </>
   );

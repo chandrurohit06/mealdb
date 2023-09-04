@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import "./Meal.scss";
 import { FaUtensilSpoon } from "react-icons/fa";
 import { AiFillHome } from "react-icons/ai";
@@ -6,24 +6,20 @@ import { Link } from "react-router-dom";
 import { BiChevronsRight } from "react-icons/bi";
 import { AiOutlineCheckSquare } from "react-icons/ai";
 
-import { ButtonVariant } from "../antdcomponents/button";
-import {Popupmodal} from "../antdcomponents/modal"
+import { ButtonVariant } from "../AntdComponents/Button";
+import { Popupmodal } from "../AntdComponents/PopupModal";
 import { Divider, Space, Tag } from "antd";
 
 const MealSingle = ({ meal }) => {
   const [visible, setVisible] = useState(false);
 
-  console.log(meal);
   let tags = meal?.tags?.split(",");
-  console.log(meal);
   let instructions = meal?.instructions?.split("\r\n");
   instructions = instructions?.filter((instruction) => instruction.length > 1);
 
   const handleModalClick = () => {
-   setVisible(true)
+    setVisible(true);
   };
-
-  
 
   return (
     <div className="section-wrapper">
@@ -51,7 +47,6 @@ const MealSingle = ({ meal }) => {
           <div className="details-head grid">
             <div className="details-img">
               <img src={meal?.thumbnail} alt="" className="img-cover" />
-            
             </div>
 
             <div className="details-intro">
@@ -63,89 +58,57 @@ const MealSingle = ({ meal }) => {
                   </span>
                   <span className="text-uppercase ls-2">{meal?.category}</span>
                 </div>
-
               </div>
 
-              {/* <div className='tags flex align-start flex-wrap'>
-                <h6 className='fs-16'>Tags:</h6>
-                <ul className='flex align-center flex-wrap'>
-                  {
-                    tags?.map((tag, idx) => (<li key = {idx} className = "fs-14">{tag}</li>))
-                  }
-                </ul>
-              </div> */}
-
-{/* ingredients */}
-
               <div className="my-1 px-1 py-3">
-              <span className="text-uppercase fw-8 ls-1 my-1">
-              Ingredients &nbsp;
-                  </span>
+                <span className="text-uppercase fw-8 ls-1 my-1">
+                  Ingredients &nbsp;
+                </span>
                 <ul className="grid my-3">
                   <Space size={[1, "small"]} wrap>
                     {meal?.ingredients?.map((ingredient, idx) => (
-                      <Tag style={{fontSize:"1.5rem"}} bordered={false} color="volcano">
-                    {ingredient}
+                      <Tag
+                        style={{ fontSize: "1.5rem" }}
+                        bordered={false}
+                        color="volcano"
+                      >
+                        {ingredient}
                       </Tag>
-
-                      // <li key={idx} className="flex align-center">
-                      //   <span className="li-dot">{idx + 1}</span>
-                      //   <span className="text-capitalize text-white fs-15">
-                      //     {ingredient}
-                      //   </span>
-                      // </li>
                     ))}
                   </Space>
                 </ul>
               </div>
 
               <div className="my-1 px-1 py-3">
-              <span className="text-uppercase fw-8 ls-1 my-1">
-              Measures &nbsp;
-                  </span>
+                <span className="text-uppercase fw-8 ls-1 my-1">
+                  Measures &nbsp;
+                </span>
                 <ul className="grid my-3">
                   <Space size={[1, "small"]} wrap>
                     {meal?.measures?.map((measure, idx) => (
-                      <Tag style={{fontSize:"1.5rem"}} bordered={false} color="volcano">
-                    {measure}
+                      <Tag
+                        style={{ fontSize: "1.5rem" }}
+                        bordered={false}
+                        color="volcano"
+                      >
+                        {measure}
                       </Tag>
-
-                      // <li key={idx} className="flex align-center">
-                      //   <span className="li-dot">{idx + 1}</span>
-                      //   <span className="text-capitalize text-white fs-15">
-                      //     {ingredient}
-                      //   </span>
-                      // </li>
                     ))}
                   </Space>
                 </ul>
               </div>
-              
+
               <div className="source flex align-center my-2">
-                  <ButtonVariant
-                    label="Checkout"
-                    click={handleModalClick}
-                    type="primary"
-                  />
-                </div>
+                <ButtonVariant
+                  label="Checkout"
+                  click={handleModalClick}
+                  type="primary"
+                />
+              </div>
             </div>
           </div>
 
           <div className="details-body">
-            {/* <div className="measures my-4">
-              <h6 className="fs-16">Measure:</h6>
-              <ul className="grid">
-                {meal?.measures?.map((measure, idx) => (
-                  <li key={idx} className="fs-14 flex align-end">
-                    <span className="li-icon fs-12 text-orange">
-                      <FaUtensilSpoon />
-                    </span>
-                    <span className="li-text fs-15 fw-6 op-09">{measure}</span>
-                  </li>
-                ))}
-              </ul>
-            </div> */}
-
             <div className="instructions my-4">
               <h6 className="fs-16">Instructions:</h6>
               <ul className="grid">
@@ -166,8 +129,7 @@ const MealSingle = ({ meal }) => {
         </section>
       </div>
 
-      <Popupmodal onClose={()=>setVisible(false)} visible={visible}/>
-
+      <Popupmodal onClose={() => setVisible(false)} visible={visible} />
     </div>
   );
 };

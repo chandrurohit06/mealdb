@@ -6,8 +6,7 @@ import { IoMdMenu} from "react-icons/io";
 
 
 const Navbar = () => {
- 
-  const [scrolled, setScrolled] = useState(false);
+ const [scrolled, setScrolled] = useState(false);
 
   const handleScroll = () => {
     const offset = window.scrollY;

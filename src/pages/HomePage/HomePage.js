@@ -5,7 +5,7 @@ import Loader from "../../components/Loader/Loader";
 import CategoryList from "../../components/Category/CategoryList";
 import NotFound from "../../components/NotFound/NotFound";
 import MealList from "../../components/Meal/MealList";
-import Search from "../../components/antdcomponents/search";
+import Search from "../../components/AntdComponents/Search";
 
 //redux
 import { useSelector, useDispatch } from "react-redux";
@@ -13,11 +13,10 @@ import {
   startFetchMealsBySearch,
   startFetchSingleMeal,
   startFetchMealByCategory,
-} from "../../redux/meals/mealSlice";
+} from "../../redux/meals/MealSlice";
 
 const HomePage = () => {
   const [searchTerm, setSearchTerm] = useState("");
-
   const {
     categories,
     meals,

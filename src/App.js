@@ -8,7 +8,7 @@ import { Home, MealDetails, Error, Category,FinalPage } from "./pages/index";
 // components
 import Header from "./components/Header/Header";
 import { useSelector, useDispatch } from "react-redux";
-import { startFetchMealByCategory } from "./redux/meals/mealSlice";
+import { startFetchMealByCategory } from "./redux/meals/MealSlice";
 
 function App() {
   const dispatch = useDispatch();

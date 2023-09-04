@@ -3,21 +3,17 @@ import "./CategoryPage.scss";
 import { useParams } from 'react-router-dom';
 //redux
 import { useDispatch,useSelector } from 'react-redux';
-import { startFetchMealByCategory } from '../../redux/meals/mealSlice';
+import { startFetchMealByCategory } from '../../redux/meals/MealSlice';
 //components
 import MealList from '../../components/Meal/MealList';
-
 
 const CategoryPage = () => {
   const {name} = useParams();
   const dispatch = useDispatch()
 
-  // const { categoryMeals, dispatch, categories } = useMealContext();
   const {  categoryMeals, categories } = useSelector(
     (state) => ({ ...state.mealsSlice })
   );
-
-
 
   let catDescription = "";
 
@@ -30,8 +26,6 @@ const CategoryPage = () => {
   useEffect(() => {
    dispatch(startFetchMealByCategory(name));
   }, [name]);
-
-
 
   return (
     <main className='main-content py-5'>

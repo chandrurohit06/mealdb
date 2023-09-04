@@ -9,7 +9,7 @@ import MealSingle from "../../components/Meal/MealSingle";
 import Loader from '../../components/Loader/Loader';
 
 //redux
-import { startFetchSingleMeal } from '../../redux/meals/mealSlice';
+import { startFetchSingleMeal } from '../../redux/meals/MealSlice';
 import { useSelector,useDispatch } from 'react-redux';
 
 const MealDetailsPage = () => {
@@ -21,18 +21,11 @@ const MealDetailsPage = () => {
     (state) => ({ ...state.mealsSlice })
   );
 
-
   useEffect(() => {
     dispatch(startFetchSingleMeal(id));
     localStorage.setItem("mealId",id)
     
   }, [id]);
-
- 
-
-  
-
-
 
   let ingredientsArr = [], measuresArr = [], singleMeal = {};
   let mealData = meal?.meals

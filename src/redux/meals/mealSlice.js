@@ -38,7 +38,6 @@ export const startFetchMealsBySearch = createAsyncThunk(
   }
 );
 
-
 // ---------------------------------------------------------------------------------
 
 const mealSlice = createSlice({
@@ -94,7 +93,6 @@ const mealSlice = createSlice({
       state.mealLoading = false;
       state.mealError = true;
     },
-
 
     [startFetchMealByCategory.pending]: (state, action) => {
       state.categoryMealsLoading = true;
