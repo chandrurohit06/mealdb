@@ -43,7 +43,13 @@ const FormInput = ({
             ]
       }
     >
-      <Input type={type} value={value} name={name} onChange={onChange} />
+      <Input
+        style={{ height: name === "address" && "100px" }}
+        type={type}
+        value={value}
+        name={name}
+        onChange={onChange}
+      />
     </Form.Item>
   );
 };

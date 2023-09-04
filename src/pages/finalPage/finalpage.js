@@ -63,7 +63,12 @@ export const FinalPage = () => {
     dispatch(startFetchSingleMeal(id));
   }, []);
 
+  
+
   const navigationType = window.performance?.navigation.type;
+  console.log(window?.performance.getEntriesByType("navigation")[0].type)
+
+  
 
   useEffect(() => {
     console.log(navigationType);
@@ -102,7 +107,7 @@ export const FinalPage = () => {
 
               <div className="meal-itm-body">
                 <div className="meal-itm-body-info flex flex-column">
-                  <div className="area fs-14 ls-1 fw-5">
+                  <div className="area fs-20 ls-1 fw-5">
                     {mealImage?.strMeal}
                   </div>
                 </div>
