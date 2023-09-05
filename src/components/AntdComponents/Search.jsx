@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col, Input, Button } from 'antd';
+import { Row, Col, Input } from 'antd';
 
 //antd search input
 function Search({onSearch,searchTerm,onChange}) {
@@ -8,7 +8,6 @@ function Search({onSearch,searchTerm,onChange}) {
       <Row justify="center">
         <Col span={8}>
           <Input.Search
-          
             value={searchTerm}
             placeholder="Search Meals..."
             enterButton="Search"

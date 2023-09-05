@@ -1,6 +1,6 @@
 import React from 'react';
 import "./NotFound.scss";
-import { Button, Result } from 'antd';
+import { Result } from 'antd';
 
 //not found component when there is no meals
 

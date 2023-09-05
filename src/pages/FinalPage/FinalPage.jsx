@@ -1,15 +1,10 @@
 import React, { useEffect } from "react";
 //antd c
 import {
-  List,
-  Typography,
   Image,
-  Card,
   Col,
-  Divider,
   Row,
   Descriptions,
-  Button,
   Result,
 } from "antd";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -21,7 +16,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { startFetchSingleMeal } from "../../redux/meals/MealSlice";
 
 export const FinalPage = () => {
-  const { categories, meal, categoryLoading, mealLoading } = useSelector(
+  const {  meal } = useSelector(
     (state) => ({ ...state.mealsSlice })
   );
   const location = useLocation();
@@ -29,6 +24,7 @@ export const FinalPage = () => {
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
+  
   const items = [
     {
       key: "1",
@@ -68,7 +64,7 @@ export const FinalPage = () => {
     if (!mealImage) {
       navigate("/");
     }
-  }, []);
+  },[]);
 
   return (
     <>
@@ -90,7 +86,7 @@ export const FinalPage = () => {
 
               <div className="meal-itm-body">
                 <div className="meal-itm-body-info flex flex-column">
-                  <div className="area fs-20 ls-1 fw-5">
+                  <div className="area fs-18 ls-1 fw-5">
                     {mealImage?.strMeal}
                   </div>
                 </div>

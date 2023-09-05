@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Meal.scss";
-import { FaUtensilSpoon } from "react-icons/fa";
+
 import { AiFillHome } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { BiChevronsRight } from "react-icons/bi";
@@ -8,12 +8,11 @@ import { AiOutlineCheckSquare } from "react-icons/ai";
 
 import { ButtonVariant } from "../AntdComponents/Button";
 import { Popupmodal } from "../AntdComponents/PopupModal";
-import { Divider, Space, Tag } from "antd";
+import { Space, Tag } from "antd";
 
 const MealSingle = ({ meal }) => {
   const [visible, setVisible] = useState(false);
 
-  let tags = meal?.tags?.split(",");
   let instructions = meal?.instructions?.split("\r\n");
   instructions = instructions?.filter((instruction) => instruction.length > 1);
 
@@ -68,6 +67,7 @@ const MealSingle = ({ meal }) => {
                   <Space size={[1, "small"]} wrap>
                     {meal?.ingredients?.map((ingredient, idx) => (
                       <Tag
+                        key={idx}
                         style={{ fontSize: "1.5rem" }}
                         bordered={false}
                         color="volcano"
@@ -87,6 +87,7 @@ const MealSingle = ({ meal }) => {
                   <Space size={[1, "small"]} wrap>
                     {meal?.measures?.map((measure, idx) => (
                       <Tag
+                        key={idx}
                         style={{ fontSize: "1.5rem" }}
                         bordered={false}
                         color="volcano"

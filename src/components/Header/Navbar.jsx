@@ -28,7 +28,7 @@ const Navbar = () => {
           <div className='brand-and-toggler flex align-center justify-between'>
             <Link to = "/" className='navbar-brand fw-3 fs-22 flex align-center'>
               <MdFoodBank />
-              <span className='navbar-brand-text fw-7'>FastEat.</span>
+              <span className='navbar-brand-text fw-7'>TastyTable.</span>
             </Link>
           
           </div>
