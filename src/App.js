@@ -7,7 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Home, MealDetails, Error, Category,FinalPage } from "./pages/index";
 // components
 import Header from "./components/Header/Header";
-import { useSelector, useDispatch } from "react-redux";
+import {  useDispatch } from "react-redux";
 import { startFetchMealByCategory } from "./redux/meals/MealSlice";
 
 function App() {
@@ -17,6 +17,7 @@ function App() {
     dispatch(startFetchMealByCategory("Miscellaneous"));
   }, []);
 
+//handling routing
   return (
     <BrowserRouter>
       <Header />

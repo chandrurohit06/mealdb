@@ -2,6 +2,7 @@ import React from 'react';
 import "./Meal.scss";
 import { Link } from 'react-router-dom';
 
+//meals component for displaying meals name with image
 const MealList = ({ meals }) => {
  
   return (

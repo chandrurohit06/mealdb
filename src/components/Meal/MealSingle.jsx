@@ -10,6 +10,8 @@ import { ButtonVariant } from "../AntdComponents/Button";
 import { Popupmodal } from "../AntdComponents/PopupModal";
 import { Space, Tag } from "antd";
 
+//component for displaying single meal and its ingridients and description
+
 const MealSingle = ({ meal }) => {
   const [visible, setVisible] = useState(false);
 

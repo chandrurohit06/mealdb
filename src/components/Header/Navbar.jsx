@@ -2,11 +2,13 @@ import React, {useState, useEffect} from 'react';
 import {Link} from "react-router-dom";
 import "./Header.scss";
 import { MdFoodBank} from "react-icons/md";
-import { IoMdMenu} from "react-icons/io";
 
 
+//navbar component
 const Navbar = () => {
  const [scrolled, setScrolled] = useState(false);
+
+ //handling scrool based on ofset
  const handleScroll = () => {
     const offset = window.scrollY;
     if(offset > 200){

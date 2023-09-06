@@ -4,6 +4,7 @@ import { BsSearch } from "react-icons/bs";
 
 import { useNavigate } from 'react-router-dom';
 
+//search component
 
 const SearchForm = () => {
   const navigate = useNavigate();

@@ -1,12 +1,6 @@
 import React, { useEffect } from "react";
 //antd c
-import {
-  Image,
-  Col,
-  Row,
-  Descriptions,
-  Result,
-} from "antd";
+import { Image, Col, Row, Descriptions, Result } from "antd";
 import { useLocation, useNavigate } from "react-router-dom";
 
 //components
@@ -15,16 +9,17 @@ import "../../components/Meal/Meal.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { startFetchSingleMeal } from "../../redux/meals/MealSlice";
 
+//pages for showing customer order details
+
 export const FinalPage = () => {
-  const {  meal } = useSelector(
-    (state) => ({ ...state.mealsSlice })
-  );
+  const { meal } = useSelector((state) => ({ ...state.mealsSlice }));
+
   const location = useLocation();
   const { formData } = location.state;
   const navigate = useNavigate();
-
   const dispatch = useDispatch();
-  
+
+  //array for showing customer shipping information
   const items = [
     {
       key: "1",
@@ -52,7 +47,7 @@ export const FinalPage = () => {
       children: formData?.address,
     },
   ];
-
+//useeffect for fetching selected meals
   useEffect(() => {
     let id = localStorage.getItem("mealId");
     dispatch(startFetchSingleMeal(id));
@@ -60,11 +55,12 @@ export const FinalPage = () => {
 
   let mealImage = meal?.meals?.length > 0 && meal?.meals[0];
 
+//useeffect for navigating to home page
   useEffect(() => {
     if (!mealImage) {
       navigate("/");
     }
-  },[]);
+  }, []);
 
   return (
     <>

@@ -1,14 +1,16 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "../../api/axios"
+import axios from "../../api/Axios"
 // routes
 import {
   CATEGORIES_URL,
   MEAL_CATEGORIES_URL,
   MEAL_SINGLE_URL,
   SEARCH_URL,
-} from "../../utils/constants";
+} from "../../utils/Constants";
 
 // ---------------------------------------------------------------------------------
+
+//integrating meal db api using redux toolkit methods
 
 export const startFetchCategories = createAsyncThunk(
   "fetch/getCategories",
